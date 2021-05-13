@@ -45,9 +45,9 @@ Note that we will not be implementing _all_ the features listed, some will be le
    > **Note:** If the `create-react-app` command hangs and does nothing for over a minute, your create-react-app may be out of date.  Cancel the process and run the following to uninstall it:
    >
    >  `npm uninstall -g create-react-app`
-   > 
+   >
    > Then run the following to install it again:
-   > 
+   >
    >  `npm install -g create-react-app`
 
 1. Move to the directory that was just created: `cd <lan-id>-react-redux-doctors`​, and open it up in your text editor.
@@ -61,9 +61,9 @@ Note that we will not be implementing _all_ the features listed, some will be le
 1. **NEW** with Create-React-App 4 for hot reloading feature
 
     Fast refresh is the official React implementation of the old feature, hot reloading. It is akin to hot reloading but it is much more reliable.
-    
+
     Unlike hot reloading, fast refresh is off by default. To enable it, let's navigate to package.json file and update npm script "start" to be
-    
+
     ```bash
     "start": "react-scripts start -FAST_REFRESH=true",
     ```
@@ -77,7 +77,7 @@ Note that we will not be implementing _all_ the features listed, some will be le
      return <h1>Hello, {props.name}</h1>;
    }
    ```
-   
+
    Save the changes and fast refresh shall update the view in browser for you automatically.
 
 1. Update ReactDOM.render() line in `index.js` to pass in the `name` prop.
@@ -90,8 +90,8 @@ Note that we will not be implementing _all_ the features listed, some will be le
      document.getElementById('root')
    );
    ```
-   
-   **WARNING**: With Fast Refresh, there is a limitation at this moment, that changes in `index.js` won't show in browser automatically. We need to manually refresh the browser. Changes for other components refresh properly. 
+
+   **WARNING**: With Fast Refresh, there is a limitation at this moment, that changes in `index.js` won't show in browser automatically. We need to manually refresh the browser. Changes for other components refresh properly.
 
    Take a look at React DevTools and observe the component tree.
 
@@ -103,17 +103,25 @@ Throughout this course, we'll be using both class components and functional comp
 
 Jump to:
 
-1. [Show a list of doctors](#show-a-list-of-doctors)
-1. [Creating a DoctorListItem component](#creating-a-doctorlistitem-component)
-1. [Add a doctor component](#add-a-doctor)
-1. [Adding a doctor to the list](#adding-a-doctor-to-the-list)
-1. [Using MUX as a component library](#using-mux-as-a-component-library)
-1. [Individual exercise: See more doctor details](#see-more-doctor-details)
-1. [Show a list of patients](#show-a-list-of-patients)
-1. [Individual Exercise: Delete a doctor](#delete-a-doctor)
-1. [Individual Exercise (Optional): Page Routing](#individual-exercise-optional-page-routing)
-1. [Individual Exercise (Optional): Handling errors with React Toastify](#individual-exercise-optional-handling-errors-with-react-toastify)
-1. [FYI Only: Sample code calling APIgee endpoint](#fyi-only-sample-code-calling-apigee-endpoint)
+- [react-exercises](#react-exercises)
+  - [Local Setup](#local-setup)
+  - [Design](#design)
+    - [Features](#features)
+  - [Create a React App](#create-a-react-app)
+  - [Adding functionality to your app](#adding-functionality-to-your-app)
+    - [1. Show a list of doctors](#1-show-a-list-of-doctors)
+    - [2. Creating a DoctorListItem component](#2-creating-a-doctorlistitem-component)
+    - [3. Add a doctor](#3-add-a-doctor)
+      - [Controlled Components](#controlled-components)
+      - [Uncontrolled Components](#uncontrolled-components)
+    - [4. Adding a doctor to the list](#4-adding-a-doctor-to-the-list)
+    - [5. Using MUX as a component library](#5-using-mux-as-a-component-library)
+    - [6. See more doctor details](#6-see-more-doctor-details)
+    - [7. Show a list of patients](#7-show-a-list-of-patients)
+    - [8. Delete a doctor](#8-delete-a-doctor)
+    - [9. **Individual Exercise (Optional):** Page Routing](#9-individual-exercise-optional-page-routing)
+    - [10. **Individual Exercise (Optional):** Handling errors with React Toastify](#10-individual-exercise-optional-handling-errors-with-react-toastify)
+    - [FYI Only: Sample code calling APIgee endpoint](#fyi-only-sample-code-calling-apigee-endpoint)
 
 ### 1. Show a list of doctors
 
@@ -534,18 +542,18 @@ With our input and button set up, we can now add a doctor to the list. We do thi
 
 [MUX](https://mux.manulife.com) is a React component library that implements Manulife's Global Branding.
 
-1. Install MUX by running `npm install @awesomecomponents/mux styled-components`. (MUX also needs the `styled-components` package).
+1. Install MUX by running `npm install @manulife/mux styled-components`. (MUX also needs the `styled-components` package).
 
 1. Add the fonts in `App.js` (add before the `App.css` import).
 
    ```jsx
-   import '@awesomecomponents/mux/core/typography/assets/fonts/fonts.css';
+   import '@manulife/mux/core/typography/assets/fonts/fonts.css';
    ```
 
 1. Try out the `<H1>` typography component by replacing in `App.js` with
 
    ```jsx
-   import { H1 } from '@awesomecomponents/mux/core/typography';
+   import { H1 } from '@manulife/mux';
    ...
    <H1>Hello, {props.name}</H1>;
    ```
@@ -554,10 +562,8 @@ With our input and button set up, we can now add a doctor to the list. We do thi
 
    ```jsx
    ...
-   import '@awesomecomponents/mux/core/typography/assets/fonts/fonts.css';
-
-   import UtilityHeader from '@awesomecomponents/mux/core/components/UtilityHeader';
-   import { H1 } from '@awesomecomponents/mux/core/typography';
+   import '@manulife/mux/core/typography/assets/fonts/fonts.css';
+   import { H1, UtilityHeader } from '@manulife/mux';
    ...
    function App(props) {
      return (

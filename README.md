@@ -14,7 +14,7 @@ Ensure the following Chrome extension is installed before starting this exercise
 
 We want to create a web app that looks something like this:
 
-![Whiteboard Prototype](whiteboard_prototype.jpg)
+![Whiteboard Prototype](images/whiteboard_prototype.jpg)
 
 ### Features
 

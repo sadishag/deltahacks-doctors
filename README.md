@@ -49,6 +49,8 @@ Note that we will not be implementing _all_ the features listed, some will be le
    > Then run the following to install it again:
    >
    >  `npm install -g create-react-app`
+   >
+   > **Note:** If you're still having problems with `create-react-app`, clone this project and start from there.
 
 1. Move to the directory that was just created: `cd <lan-id>-react-redux-doctors`​, and open it up in your text editor.
 

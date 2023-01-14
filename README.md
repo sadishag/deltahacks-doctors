@@ -457,7 +457,7 @@ With our input and button set up, we can now add a doctor to the list. We do thi
 
 1. **Bonus Individual exercise:** Try clearing the name input after a doctor is added to the list.
 
-### 8. Delete a doctor
+### 5. Delete a doctor
 
 **Goal**: Each doctor has a delete icon beside their name. When the delete icon is clicked, the doctor is removed from the list.
 

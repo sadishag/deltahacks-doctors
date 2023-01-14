@@ -2,48 +2,42 @@
 
 ## Create a React App
 
-1. Open a bash terminal in VS Code​. Ensure you're in the root directory you set up for the University.
+1. Open a bash terminal in VS Code​.
 
-2. To make sure you are not going to use an old version of `create-react-app`, run this command `npm uninstall -g create-react-app`.
+1. To make sure you are not going to use an old version of `create-react-app`, run this command `npm uninstall -g create-react-app`.
 
    > **Note:** If the `create-react-app` command hangs and does nothing for over a minute, your create-react-app may be out of date. Cancel the process and run the following to uninstall it. Make sure you are installing using `npx` and `node version 16`, old versions of create-react-app installed globally (-g) are not working anymore:
 
-3. Run the following command to create a react app: `npx create-react-app mu-se-<country_code>-<cohort_num>-<lan_id>-react`​. Do not copy this command, type it yourself as copying can cause issues. We're also using this React app as a starting point for the Redux course project (up next).
+1. Run the following command to create a react app: `npx create-react-app delta-hacks-react-workshop`​. Do not copy this command, type it yourself as copying can cause issues. We're also using this React app as a starting point for the Redux course project (up next).
 
-4. Move to the directory that was just created: `cd mu-se-<country_code>-<cohort_num>-<lan_id>-react`​, and open it up in your text editor.
+1. Move to the directory that was just created: `cd delta-hacks-react-workshop`​, and open it up in your text editor.
 
-5. If the above step fails to create a react app, you can clone a starter copy of the react app located [here](https://github.com/manulife-university-global/mu-se-labs-react-starter), using:
+1. Open `./src/index.js`. and examine the file. The line `ReactDOM.render(<App />, document.getElementById('root'));` mounts the App component onto the “root” element in index.html. The application stays on index.html the entire time.
 
-   ```bash
-   git clone git@github.com:manulife-university-global/mu-se-labs-react-starter.git <lanid>-react-redux-doctors
+1. Open `./src/App.js`. This is your top-most application component. A React application is a tree of components. All future components we write will be children or grandchildren of this component.
+
+1. Look at the contents of `package.json` and the `node_modules` folder. (dependencies).
+
+1. Run your React application: `npm start`​.
+
+1. Replace the contents of `App.js` with the following:
+
+   ```jsx
+   function App(props) {
+     return <h1>Hello, {props.name}</h1>;
+   }
+
+   export default App;
    ```
 
-6. Open `./src/index.js`. and examine the file. The line `ReactDOM.render(<App />, document.getElementById('root'));` mounts the App component onto the “root” element in index.html. The application stays on index.html the entire time.
+   Save the changes and fast refresh shall update the view in browser for you automatically.
 
-7. Open `./src/App.js`. This is your top-most application component. A React application is a tree of components. All future components we write will be children or grandchildren of this component.
-
-8. Look at the contents of `package.json` and the `node_modules` folder. (dependencies).
-
-9. Run your React application: `npm start`​.
-
-10. Replace the contents of `App.js` with the following:
-
-    ```jsx
-    function App(props) {
-      return <h1>Hello, {props.name}</h1>;
-    }
-
-    export default App;
-    ```
-
-    Save the changes and fast refresh shall update the view in browser for you automatically.
-
-11. Update ReactDOM.render() line in `index.js` to pass in the `name` prop.
+1. Update ReactDOM.render() line in `index.js` to pass in the `name` prop.
 
 ```jsx
 ReactDOM.render(
   <React.StrictMode>
-    <App name="Manulife University" />
+    <App name="Delta Hacks" />
   </React.StrictMode>,
   document.getElementById("root")
 );
@@ -111,21 +105,20 @@ const [doctors, setDoctors] = useState([]);
    import { useState } from "react";
    ```
 
-7. Next, use the `fetch()` function to call the REST service to get a list of doctors.
+7. Next, use the import the list of doctors in `src/data/doctors` inside the `useEffect` hook to mimic a service call to something like an api.
 
-   You can use the REST API endpoint here: https://muprogs.manulife.com/coach/rest-exercise-node/v1/doctors
+```jsx
+import dataDoctors from '../data/doctors';
+...
+```
 
-   In order to call `fetch` only on the initial component load, invoke it from within the [`useEffect` hook](https://reactjs.org/docs/hooks-effect.html).
+```jsx
+useEffect(() => {
+  setDoctors(dataDoctors);
+}, []);
+```
 
-   ```jsx
-   useEffect(() => {
-     fetch("https://muprogs.manulife.com/coach/rest-exercise-node/v1/doctors")
-       .then((response) => response.json())
-       .then((data) => console.log(data));
-   }, []);
-   ```
-
-   Check out the console in the browser. You should see the data printed there.
+Check out the console in the browser. You should see the data printed there.
 
 8. Now that we have the list of doctors, let's store them in the local component state using the `setDoctors` function that we had initialized in the previous steps. This will update the `doctors` variable with the data from the API.
 
@@ -134,11 +127,7 @@ const [doctors, setDoctors] = useState([]);
    const [doctors, setDoctors] = useState([]);
    ...
    useEffect(() => {
-     fetch(
-       'https://muprogs.manulife.com/coach/rest-exercise-node/v1/doctors'
-     )
-       .then((response) => response.json())
-       .then((data) => setDoctors(data));
+    setDoctors(dataDoctors);
    }, []);
    ```
 
@@ -151,9 +140,7 @@ function DoctorsList() {
   const [doctors, setDoctors] = useState([]);
 
   useEffect(() => {
-    fetch("v1/doctors")
-      .then((response) => response.json())
-      .then((data) => setDoctors(data));
+    setDoctors(dataDoctors);
   }, []);
 
   return (
